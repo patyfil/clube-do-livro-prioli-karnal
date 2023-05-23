@@ -28,175 +28,163 @@
 2 - Instale o npm: `npm install`  
 3 - Execute: `npm start` 
 
-# Clube do Livro
+---
 
-## Links dos livros
-
-Lista de livros do Clube do Livro com Karnal e Prioli
+## Lista de livros do Clube do Livro com Karnal e Prioli
 
 2023
 
-1 - A hora da estrela
+1 - [A hora da estrela](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/01.jpg?raw=true)  
 Clarice Lispector
 
-2 - Arendt, entre o amor e o mal
+
+2 - [Arendt, entre o amor e o mal](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/02.jpg?raw=true)  
 Ann Heberlein
 
-3 - Capitalismo sem rivais
+
+3 - [Capitalismo sem rivais](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/03.jpg?raw=true)  
 Branko Milanovic
 
-4 - Fahrenheit 451"
+
+4 - [Fahrenheit 451](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/04.jpg?raw=true)  
 Ray Bradbury
 
-5 - Ideologias
+
+5 - [Ideologias](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/05.jpg?raw=true)  
 Gabriela Prioli
 
-6 - Modernidade Líquida
+
+6 - [Modernidade Líquida](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/06.jpg?raw=true)  
 Zygmunt Bauman
 
-7 - O Estrangeiro
+
+7 - [O Estrangeiro](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/07.jpg?raw=true)  
 Albert Camus
 
-8 - O olho mais azul
+
+8 - [O olho mais azul](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/08.jpg?raw=true)  
 Toni Morrison
 
-9 - Pecar e Perdoar
+
+9 - [Pecar e Perdoar](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/09.jpg?raw=true)  
 Leandro Karnal
 
-10 - Ruído
+
+10 - [Ruído](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/10.jpg?raw=true)  
 Daniel Kahneman e demais autores.
+
 
 ---
 
 2022
 
-
-1 - A Mente Moralista
+1 - [A Mente Moralista](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/01.jpg?raw=true)  
 Jonathan Haidt
 
-2 - Galileu e os negadores da ciência
+
+2 - [Galileu e os negadores da ciência](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/02.jpg?raw=true)  
 Mario Livio
 
-3 - Algoritmos da destruição em massa
+
+3 - [Algoritmos da destruição em massa](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/03.jpg?raw=true)  
 Cathy O’Neil
 
-4 - O naufrágio das civilizações
+
+4 - [O naufrágio das civilizações](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/04.jpg?raw=true)  
 Amin Maalouf
 
-5 - Aprender a Viver: Filosofia para os novos tempos
+
+5 - [Aprender a Viver: Filosofia para os novos tempos](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/05.jpg?raw=true)  
 Luc Ferry
 
-6 - Hibisco Roxo
+
+6 - [Hibisco Roxo](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/06.jpg?raw=true)  
 Chimamanda Ngozi
 
-7 - O Avesso da Pele
+
+7 - [O Avesso da Pele](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/07.jpg?raw=true)  
 Jeferson Tenório
 
-8 - Sociedade do Cansaço
+
+8 - [Sociedade do Cansaço](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/08.jpg?raw=true**)  
 Byung-Chul Han
 
-9 - O Anel de Giges
+
+9 - [O Anel de Giges](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/09.jpg?raw=true)  
 Eduardo Giannetti
+
 
 ---
 
 2021
 
-1 - Humanidade
+1 - [Humanidade](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/01.jpg?raw=true)  
 Rutger Bregman
 
-2 - Eu sou dinamite!
+
+2 - [Eu sou dinamite!](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/02.jpg?raw=true)  
 Sue Prideaux
 
-3 - Fascismo à brasileira
+
+3 - [Fascismo à brasileira](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/03.jpg?raw=true)  
 Pedro Doria
 
-4 - As grandes estratégias
+
+4 - [As grandes estratégias](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/04.jpg?raw=true)  
 John Lewis Gaddis
 
-5 - Novas formas de amar
+
+5 - [Novas formas de amar](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/05.jpg?raw=true)  
 Regina Navarro Lins 
 
-6 - Internacionalismo ou extinção
+
+6 - [Internacionalismo ou extinção](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/06.jpg?raw=true)  
 Noam Chomsky
 
-7 - A metamorfose
+
+7 - [A metamorfose](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/07.jpg?raw=true)  
 Franz Kafka
 
-8 - O dilema do porco-espinho
+
+8 - [O dilema do porco-espinho](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/08.jpg?raw=true)  
 Leandro Karnal
+
 
 ---
 
 2020
 
-1 - História da Riqueza do Homem - Do Feudalismo ao Século XXI, 
+1 - [História da Riqueza do Homem - Do Feudalismo ao Século XXI](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/01.jpg?raw=true)  
 Leo Huberman
 
-2 - Justiça: O que é fazer a coisa certa, 
+
+2 - [Justiça: O que é fazer a coisa certa](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/02.jpg?raw=true)  
 Michael J. Sandel
 
-3 - Conservadorismo: Um convite a grande tradição, 
+
+3 - [Conservadorismo: Um convite a grande tradição](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/03.jpg?raw=true)  
 Roger Scruton
 
-4 - O chamado da tribo: Grandes pensadores para o nosso tempo, 
+
+4 - [O chamado da tribo: Grandes pensadores para o nosso tempo](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/04.jpg?raw=true)  
 Mario Vargas Llosa
 
-5 - Caminhos da esquerda - Elementos para uma reconstrução, 
+
+5 - [Caminhos da esquerda - Elementos para uma reconstrução](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/05.jpg?raw=true)  
 Ruy Fausto
 
-6 - Sobre o autoritarismo brasileiro, 
+
+6 - [Sobre o autoritarismo brasileiro](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/06.jpg?raw=true)  
 Lilia M. Schwarcz
 
-7 - O valor das ideias: Debate em tempos turbulentos, 
+
+7 - [O valor das ideias: Debate em tempos turbulentos](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/07.jpg?raw=true)  
 Marcos Lisboa e Samuel Pessôa
 
-8 - O povo contra a democracia: Por que nossa liberdade corre perigo e como salvá-la, 
+
+8 - [O povo contra a democracia: Por que nossa liberdade corre perigo e como salvá-la](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/08.jpg?raw=true)  
 Yascha Mounk
 
-9 - A revolução dos bichos: Um conto de fadas, 
+
+9 - [A revolução dos bichos: Um conto de fadas](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/09.jpg?raw=true)  
 George Orwell
-
-### 2023  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/01.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/02.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/03.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/04.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/05.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/06.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/07.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/08.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/09.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/10.jpg?raw=true  
-
-## 2022
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/01.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/02.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/03.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/04.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/05.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/06.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/07.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/08.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/09.jpg?raw=true  
-
-## 2021
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/as-grandes-estrategias-john.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/eu-sou-dinamite-nietzsche.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/facismo-a-brasileira.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/humanidade-leandro.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/internacionalismo-noam.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/metamorfose-franz.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/novas-formas-de-amar-regina.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/2-2021/o-dilema-do-porco-espinho.jpg?raw=true  
-
-## 2020
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/01.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/02.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/03.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/04.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/05.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/06.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/07.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/08.jpg?raw=true  
-https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/09.jpg?raw=true  
