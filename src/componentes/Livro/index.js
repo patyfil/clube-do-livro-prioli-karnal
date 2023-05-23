@@ -1,12 +1,12 @@
 import './Livro.css'
 
-const Livro = ({ nome, imagem, autor, corDeFundo }) => {
+const Livro = ({ titulo, imagem, autor, corDeFundo }) => {
   return (<div className='livro'>
     <div className='cabecalho' style={{ backgroundColor: corDeFundo}}>
-      <img src={imagem} alt={nome} />
+      <img src={imagem} alt={titulo} />
     </div>
     <div className='rodape'>
-      <h4>{nome}</h4>
+      <h4>{titulo}</h4>
       <h5>{autor}</h5>
     </div>
   </div>)

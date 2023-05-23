@@ -43,7 +43,7 @@ function App() {
 
       {edicao.map(ano => <Ano
         key={ano.nome}
-        nome={ano.nome}
+        titulo={ano.nome}
         corPrimaria={ano.corPrimaria}
         corSecundaria={ano.corSecundaria} 
         livros={livros.filter(livro => livro.ano === ano.nome)}

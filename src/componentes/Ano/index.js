@@ -10,10 +10,10 @@ const Ano = (props) => {
 
         (props.livros.length > 0) ?
             <section className="ano" style={css}>
-                <h3 style={h3Style}>{props.nome}</h3>
+                <h3 style={h3Style}>{props.titulo}</h3>
                 <div className='livros'>
-                    {props.livros.map(livro => <Livro corDeFundo={props.corPrimaria} key={livro.nome}
-                        nome={livro.nome}
+                    {props.livros.map(livro => <Livro corDeFundo={props.corPrimaria} key={livro.titulo}
+                        titulo={livro.titulo}
                         autor={livro.autor}
                         imagem={livro.imagem}
                     />)}

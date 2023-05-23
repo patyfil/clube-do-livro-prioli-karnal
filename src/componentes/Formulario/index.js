@@ -5,7 +5,7 @@ import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
 const Formulario = (props) => {
-  const [nome, setNome] = useState('')
+  const [titulo, setTitulo] = useState('')
   const [autor, setAutor] = useState('')
   const [imagem, setImagem] = useState('')
   const [ano, setAno] = useState('')
@@ -13,16 +13,16 @@ const Formulario = (props) => {
   const aoSalvar = (evento) => {
     evento.preventDefault()
     props.aoLivroCadastrado({
-      nome, 
+      titulo, 
       autor,
       imagem,
       ano,
     })
-    setNome('')
+    setTitulo('')
     setAutor('')
     setImagem('')
     setAno('')
-    // console.log('Cadastrado!', nome, autor, imagem, anoEdicao)
+    // console.log('Cadastrado!', titulo, autor, imagem, anoEdicao)
   }
   return (
     <section className='formulario'>
@@ -30,10 +30,10 @@ const Formulario = (props) => {
         <h2>Preencha os dados para criar o card do livro</h2>
         <CampoTexto
           obrigatorio={true}
-          label="Nome"
+          label="Título"
           placeholder="Digite o nome do livro"
-          valor={nome}
-          aoAlterado={valor => setNome(valor)}
+          valor={titulo}
+          aoAlterado={valor => setTitulo(valor)}
         />
         <CampoTexto
           obrigatorio={true}
