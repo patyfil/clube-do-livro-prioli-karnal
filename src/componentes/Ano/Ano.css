@@ -1,0 +1,17 @@
+.ano {
+  text-align: center;
+  padding: 32px;
+}
+
+.ano h3 {
+  font-size: 32px;
+  border-bottom: 4px solid;
+  display: inline-block;
+}
+
+.ano .livros {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
