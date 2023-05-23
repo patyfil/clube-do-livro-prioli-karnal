@@ -1,3 +1,22 @@
+<h1 align="center">
+  <a href="https://cursos.alura.com.br/course/react-desenvolvendo-javascript" style="text-align: center;">React: desenvolvendo com JavaScript - Alura</a>
+</h1>
+
+
+
+<p align="center">
+  <img src="https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/logo192.png">
+</p>
+
+
+## Este curso abordou os seguintes tópicos:
+
+    Uma biblioteca declarativa
+    Trabalhando com props
+    Interagindo com o usuário
+    Montando os times
+    Caça aos bugs
+
 # Clube do Livro
 
 ## Links dos livros
