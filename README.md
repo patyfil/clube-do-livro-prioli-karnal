@@ -32,6 +32,131 @@
 
 ## Links dos livros
 
+Lista de livros do Clube do Livro com Karnal e Prioli
+
+2023
+
+1 - A hora da estrela
+Clarice Lispector
+
+2 - Arendt, entre o amor e o mal
+Ann Heberlein
+
+3 - Capitalismo sem rivais
+Branko Milanovic
+
+4 - Fahrenheit 451"
+Ray Bradbury
+
+5 - Ideologias
+Gabriela Prioli
+
+6 - Modernidade Líquida
+Zygmunt Bauman
+
+7 - O Estrangeiro
+Albert Camus
+
+8 - O olho mais azul
+Toni Morrison
+
+9 - Pecar e Perdoar
+Leandro Karnal
+
+10 - Ruído
+Daniel Kahneman e demais autores.
+
+---
+
+2022
+
+
+1 - A Mente Moralista
+Jonathan Haidt
+
+2 - Galileu e os negadores da ciência
+Mario Livio
+
+3 - Algoritmos da destruição em massa
+Cathy O’Neil
+
+4 - O naufrágio das civilizações
+Amin Maalouf
+
+5 - Aprender a Viver: Filosofia para os novos tempos
+Luc Ferry
+
+6 - Hibisco Roxo
+Chimamanda Ngozi
+
+7 - O Avesso da Pele
+Jeferson Tenório
+
+8 - Sociedade do Cansaço
+Byung-Chul Han
+
+9 - O Anel de Giges
+Eduardo Giannetti
+
+---
+
+2021
+
+1 - Humanidade
+Rutger Bregman
+
+2 - Eu sou dinamite!
+Sue Prideaux
+
+3 - Fascismo à brasileira
+Pedro Doria
+
+4 - As grandes estratégias
+John Lewis Gaddis
+
+5 - Novas formas de amar
+Regina Navarro Lins 
+
+6 - Internacionalismo ou extinção
+Noam Chomsky
+
+7 - A metamorfose
+Franz Kafka
+
+8 - O dilema do porco-espinho
+Leandro Karnal
+
+---
+
+2020
+
+1 - História da Riqueza do Homem - Do Feudalismo ao Século XXI, 
+Leo Huberman
+
+2 - Justiça: O que é fazer a coisa certa, 
+Michael J. Sandel
+
+3 - Conservadorismo: Um convite a grande tradição, 
+Roger Scruton
+
+4 - O chamado da tribo: Grandes pensadores para o nosso tempo, 
+Mario Vargas Llosa
+
+5 - Caminhos da esquerda - Elementos para uma reconstrução, 
+Ruy Fausto
+
+6 - Sobre o autoritarismo brasileiro, 
+Lilia M. Schwarcz
+
+7 - O valor das ideias: Debate em tempos turbulentos, 
+Marcos Lisboa e Samuel Pessôa
+
+8 - O povo contra a democracia: Por que nossa liberdade corre perigo e como salvá-la, 
+Yascha Mounk
+
+9 - A revolução dos bichos: Um conto de fadas, 
+George Orwell
+
 ### 2023  
 https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/01.jpg?raw=true  
 https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/4-2023/02.jpg?raw=true  
