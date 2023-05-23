@@ -12,6 +12,7 @@ const Ano = (props) => {
                 {props.livros.map(livro => <Livro corDeFundo={props.corPrimaria} key={livro.nome}
                     nome={livro.nome}
                     autor={livro.autor}
+                    imagem={livro.imagem}
                 />)}
             </div>
         </section >

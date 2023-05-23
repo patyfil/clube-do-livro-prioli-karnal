@@ -43,7 +43,7 @@ const Formulario = (props) => {
           aoAlterado={valor => setAutor(valor)}
         />
         <CampoTexto
-          obrigatorio={true}
+          // obrigatorio={true}
           label="Imagem"
           placeholder="Digite o endereço da imagem"
           valor={imagem}
