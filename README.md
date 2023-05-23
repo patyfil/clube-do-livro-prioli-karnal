@@ -102,7 +102,7 @@ Luc Ferry
 Chimamanda Ngozi
 
 
-7 - [O Avesso da Pele](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/07.jpg?raw=true)
+7 - [O Avesso da Pele](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/3-2022/07.jpg?raw=true)  
 Jeferson Tenório
 
 
@@ -166,11 +166,11 @@ Michael J. Sandel
 Roger Scruton
 
 
-4 - [O chamado da tribo: Grandes pensadores para o nosso tempo](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/04.jpg?raw=true)
+4 - [O chamado da tribo: Grandes pensadores para o nosso tempo](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/04.jpg?raw=true)  
 Mario Vargas Llosa
 
 
-5 - [Caminhos da esquerda - Elementos para uma reconstrução](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/05.jpg?raw=true)
+5 - [Caminhos da esquerda - Elementos para uma reconstrução](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/05.jpg?raw=true)  
 Ruy Fausto
 
 
