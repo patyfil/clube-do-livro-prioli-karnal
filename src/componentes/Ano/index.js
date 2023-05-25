@@ -1,27 +1,21 @@
 import Livro from '../Livro'
 import './Ano.css'
 
-const Ano = (props) => {
-    const css = { backgroundColor: props.corSecundaria };
-    const h3Style = {
-        '--cor-primaria': props.corPrimaria, // Define a variável CSS --cor-primaria com a cor primária
-    };
+const Ano = ({ ano, livros }) => {
     return (
 
-        (props.livros.length > 0) ?
-            <section className="ano" style={css}>
-                <h3 style={h3Style}>{props.titulo}</h3>
-                <div className='livros'>
-                    {props.livros.map(livro => <Livro corDeFundo={props.corPrimaria} key={livro.titulo}
-                        titulo={livro.titulo}
-                        autor={livro.autor}
-                        imagem={livro.imagem}
-                    />)}
-                </div>
-            </section>
-            : ''
-    );
-};
-
+        livros.length > 0 && 
+        <section className="ano" 
+        style={{ backgroundImage: 'url(/imagens/fundo.png)', backgroundColor: ano.corPrimaria }}>
+            <h3 style={{ borderColor: ano.corSecundaria }}>{ano.nome}</h3>
+            <div className='livros'>
+                {livros.map((livro, indice) => <Livro 
+                key={indice} 
+                livro={livro} 
+                corDeFundo={ano.corSecundaria} />)}
+            </div>
+        </section>
+    )
+}
 
 export default Ano

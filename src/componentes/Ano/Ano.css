@@ -1,28 +1,27 @@
 .ano {
   text-align: center;
   padding: 32px;
+  background-blend-mode: multiply;
 }
 
 .ano h3 {
-  font-family: 'Prata', serif;
   font-size: 32px;
+  font-family: 'Prata';
+  border-bottom: 4px solid;
   display: inline-block;
-  padding-bottom: 10px;
-  position: relative;
-  color: inherit; /* Herda a cor do texto do elemento pai */
-  padding-bottom: 15px;
+  padding-bottom: 8px;
 }
 
-.ano h3::after {
+/* .ano h3::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 50px; /* Defina o comprimento desejado da borda */
-  height: 4px;
-  background-color: var(--cor-primaria);
-}
+  /* height: 4px; */
+  /* background-color: var(--cor-primaria); */
+/* } */ 
 
 .ano .livros {
   display: flex;
