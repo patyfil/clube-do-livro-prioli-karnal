@@ -13,6 +13,7 @@ body {
 
 h1 {
   font-size: 40px;
+  font-weight: 500;
   color: #0169D6;
   border-bottom: 4px solid #0169D6;
   display: inline-block;

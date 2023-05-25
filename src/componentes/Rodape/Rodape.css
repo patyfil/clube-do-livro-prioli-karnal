@@ -1,7 +1,7 @@
 .footer {
   background: #0169D6;
   color: #FFF;
-  padding: 60px;
+  padding: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +20,9 @@
   margin-right: 0;
 }
 
-
+p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
 
 @media only screen and (max-width: 1024px) {
   .footer {
