@@ -15,14 +15,18 @@
     Montando os times
     Caça aos bugs
     
-<h3 align="center">
+<h3 align="left">
   <a href="https://www.figma.com/file/T6BLI1HfB81eYOiVgpqQz7/Projeto-Intro-ao-React?type=design&node-id=134-128&t=aJDGtJo6JTHMUjn0-0" style="text-align: center;">Figma do projeto: Organo - Alura</a>
 </h3>
 
-<p align="center">
-<img src="https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/projeto%20react.png" width="300"/>
+<p align="left">
+<img src="./public/imagens/projeto react.png" width="300"/>
 </p>
-    
+
+<p align="right">
+<img src="./public/imagens/desktop.jpg" width="300"/>
+</p>
+
 ## Para executar o projeto:  
 1 - Faça o clone: `git@github.com:patyfil/clube-do-livro-prioli-karnal.git`  
 2 - Instale o npm: `npm install`  
