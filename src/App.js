@@ -253,16 +253,17 @@ function App() {
   return (
     <div>
       <Banner />
-      <Formulario edicao={edicao.map(ano => ano.nome)}
-        aoCadastrar={livro =>
-          setLivros([...livros, livro])} />
+
       <section className='edicao'>
-        <h1>Livros</h1>
+        {/* <h1>Livros</h1> */}
         {edicao.map((ano, indice) => <Ano
           key={indice}
           ano={ano}
           livros={livros.filter(livro => livro.ano === ano.nome)} />)}
       </section>
+      <Formulario edicao={edicao.map(ano => ano.nome)}
+        aoCadastrar={livro =>
+          setLivros([...livros, livro])} />
       <Rodape />
     </div>
   );
