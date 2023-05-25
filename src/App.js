@@ -236,7 +236,7 @@ function App() {
       ano: edicao[3].nome
     },
     {
-      titulo: "O povo contra a democracia: Por que nossa liberdade corre perigo e como salvá-la",
+      titulo: "O povo contra a democracia",
       autor: "Yascha Mounk",
       imagem: "https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/1-2020/08.jpg?raw=true",
       ano: edicao[3].nome
