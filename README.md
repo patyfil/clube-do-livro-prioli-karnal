@@ -19,12 +19,12 @@
   <a href="https://www.figma.com/file/T6BLI1HfB81eYOiVgpqQz7/Projeto-Intro-ao-React?type=design&node-id=134-128&t=aJDGtJo6JTHMUjn0-0">Figma do projeto: Organo - Alura</a>
 </h3>
 
-## Imagem Desktop:
-<img src="./public/imagens/projeto react.png" width="300"/> <img src="./public/imagens/desktop.jpg" width="400"/>
+## Imagem Desktop - Versão Alura / Minha Versão
+<img src="./public/imagens/projeto react.png" width="300"/> <img src="./public/imagens/desktop.jpg" width="341"/>
 
-## Imagem Mobile:
+## Imagem Mobile - Header / Formulário e Footer
 
-<img src="./public/imagens/mobile1.png" width="300"/> <img src="./public/imagens/mobile2.png" width="300"/>
+<img src="./public/imagens/mobile1.png" width="300"/> <img src="./public/imagens/mobile2.png" width="325"/>
 
 
 ## Para executar o projeto:  
