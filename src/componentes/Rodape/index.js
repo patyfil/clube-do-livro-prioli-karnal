@@ -26,7 +26,7 @@ const Rodape = () => {
         </section>
         <section>
             <p>
-                Desenvolvido por Patrícia M de Souza.
+                Desenvolvido por patyfil.
             </p>
         </section>
     </footer>)

@@ -29,4 +29,8 @@
   .formulario label, .formulario select {
     font-size: 18px;
   }
+
+  .formulario-container .formulario h2 {
+    font-size: 22px;
+  }
 }
