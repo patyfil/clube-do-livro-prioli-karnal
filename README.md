@@ -16,16 +16,11 @@
     Caça aos bugs
     
 <h3 align="left">
-  <a href="https://www.figma.com/file/T6BLI1HfB81eYOiVgpqQz7/Projeto-Intro-ao-React?type=design&node-id=134-128&t=aJDGtJo6JTHMUjn0-0" style="text-align: center;">Figma do projeto: Organo - Alura</a>
+  <a href="https://www.figma.com/file/T6BLI1HfB81eYOiVgpqQz7/Projeto-Intro-ao-React?type=design&node-id=134-128&t=aJDGtJo6JTHMUjn0-0">Figma do projeto: Organo - Alura</a>
 </h3>
 
-<p align="left">
-<img src="./public/imagens/projeto react.png" width="300"/>
-</p>
+<img src="./public/imagens/projeto react.png" width="300"/> <img src="./public/imagens/desktop.jpg" width="300"/>
 
-<p align="right">
-<img src="./public/imagens/desktop.jpg" width="300"/>
-</p>
 
 ## Para executar o projeto:  
 1 - Faça o clone: `git@github.com:patyfil/clube-do-livro-prioli-karnal.git`  
