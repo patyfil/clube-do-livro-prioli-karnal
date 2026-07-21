@@ -77,8 +77,9 @@ Antes de começar, certifique-se de ter o **[Node.js](https://nodejs.org/)** (ve
 5. **Acesse no navegador:**
    O projeto abrirá automaticamente no endereço http://localhost:3000.
 
+---
 
-   ### 📅 Edição 2026
+### 📅 Edição 2026
 
 1. [Orgulho e Preconceito](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/7-2026/01.webp?raw=true) — *Jane Austen*
 2. [O Dilema das Galinhas Felizes](https://github.com/patyfil/clube-do-livro-prioli-karnal/blob/main/public/imagens/7-2026/02.webp?raw=true) — *Leandro Karnal e Gustavo Arns*
