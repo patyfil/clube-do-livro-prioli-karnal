@@ -4,7 +4,10 @@
     "imagem": "https://m.media-amazon.com/images/I/71fj3qrLmFL._SL1476_.jpg"
   },
   "O Dilema das Galinhas Felizes-Leandro Karnal e Gustavo Arns": "https://link.amazon/B0aO5WVO4",
-  "Ressurreição-Liev Tolstói": "https://link.amazon/B0fFEyNcp",
+  "Ressurreição-Liev Tolstói": {
+    "comprar": "https://link.amazon/B0fFEyNcp",
+    "imagem": "https://m.media-amazon.com/images/I/81TobjDPdgL._SL1500_.jpg"
+  },
   "Seremos Dados-Marcus Bruzzo": "https://link.amazon/B05AhC2HZ",
   "A Cabeça do Brasileiro-Alberto Carlos Almeida": {
     "comprar": "https://link.amazon/B0d9ZtvV7",
