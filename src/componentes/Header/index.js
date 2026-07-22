@@ -5,7 +5,7 @@ const Header = ({ edicao, edicaoAtiva }) => {
     <header className="header-container">
       <div className="header-content">
         <div className="logo-container">
-          <img src="/imagens/logo.png" alt="Logo do Clube do Livro" className="header-logo" />
+          <img src="/imagens/logo2.webp" alt="Logo do Clube do Livro" className="header-logo" />
         </div>
         <nav className="navigation-menu">
           {edicao.map((ano) => {
