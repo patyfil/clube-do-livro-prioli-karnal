@@ -2,6 +2,9 @@
 .vscode
 # dependencies
 /node_modules
+node_modules
+node_modules_old
+node_modules*
 /.pnp
 .pnp.js
 

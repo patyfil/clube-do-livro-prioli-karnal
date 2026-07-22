@@ -55,3 +55,64 @@
   margin: 0px;
   padding: 0 16px;
 }
+
+@media (max-width: 480px) {
+  .livro {
+    width: calc(50% - 16px);
+    margin: 8px;
+  }
+  
+  .livro .cabecalho {
+    height: 90px;
+  }
+  
+  .livro img {
+    width: 70px;
+    bottom: -35px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+  
+  .livro img:hover {
+    transform: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }
+  
+  .livro:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  .livro .rodape {
+    height: auto;
+    min-height: 110px;
+    padding-top: 45px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+  }
+  
+  .livro .rodape h4 {
+    font-size: 13px;
+    line-height: 16px;
+    padding: 0 8px;
+    margin-top: 0;
+    margin-bottom: 4px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 32px;
+  }
+  
+  .livro .rodape h5 {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 14px;
+    color: #212121;
+    margin: 0px;
+    padding: 0 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
