@@ -541,7 +541,7 @@ function App() {
     // Validar token buscando informações do repositório
     fetch(`https://api.github.com/repos/${gitUser}/${gitRepo}`, {
       headers: {
-        'Authorization': `token ${gitToken}`
+        'Authorization': `Bearer ${gitToken}`
       }
     })
     .then(res => {
@@ -586,13 +586,23 @@ function App() {
     // 1. Obter o SHA do arquivo atual no GitHub para permitir a alteração
     fetch(apiUrl, {
       headers: {
-        'Authorization': `token ${gitToken}`,
+        'Authorization': `Bearer ${gitToken}`,
         'Cache-Control': 'no-cache'
       }
     })
     .then(res => {
       if (res.status === 404) {
         return { sha: null };
+      }
+      if (!res.ok) {
+        return res.text().then(text => {
+          let msg = text;
+          try {
+            const parsed = JSON.parse(text);
+            msg = parsed.message || text;
+          } catch (e) {}
+          throw new Error(`Erro ao obter metadados do arquivo (${res.status}): ${msg}`);
+        });
       }
       return res.json();
     })
@@ -606,7 +616,7 @@ function App() {
       return fetch(apiUrl, {
         method: 'PUT',
         headers: {
-          'Authorization': `token ${gitToken}`,
+          'Authorization': `Bearer ${gitToken}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -617,16 +627,25 @@ function App() {
       });
     })
     .then(res => {
-      if (res.ok) {
-        setLinks(updatedLinks);
-        alert('Link atualizado e salvo com sucesso no GitHub!');
-      } else {
-        alert('Erro ao salvar no GitHub. Verifique as permissões de gravação do seu token.');
+      if (!res.ok) {
+        return res.text().then(text => {
+          let msg = text;
+          try {
+            const parsed = JSON.parse(text);
+            msg = parsed.message || text;
+          } catch (e) {}
+          throw new Error(`Erro ao gravar no GitHub (${res.status}): ${msg}`);
+        });
       }
+      return res.json();
+    })
+    .then(() => {
+      setLinks(updatedLinks);
+      alert('Link atualizado e salvo com sucesso no GitHub!');
     })
     .catch(err => {
-      console.error(err);
-      alert('Erro de conexão ao tentar salvar.');
+      console.error('Erro detalhado ao salvar link:', err);
+      alert(`Falha ao salvar link: ${err.message}`);
     })
     .finally(() => {
       setSaveLoading(prev => ({ ...prev, [bookKey]: false }));
