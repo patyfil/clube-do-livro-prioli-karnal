@@ -57,6 +57,9 @@ const Rodape = () => {
                         <a href="https://www.facebook.com/gaprioli" target="_blank" rel="noreferrer" title="Facebook - Gabriela Prioli">
                             {socialIcons.facebook}
                         </a>
+                        <a href="https://www.youtube.com/channel/UCxKWYA49k16BoF8YzS1VbvA" target="_blank" rel="noreferrer" title="YouTube - Gabriela Prioli">
+                            {socialIcons.youtube}
+                        </a>
                     </div>
                 </div>
 
@@ -68,16 +71,17 @@ const Rodape = () => {
                         <a href="https://www.instagram.com/leandro_karnal" target="_blank" rel="noreferrer" title="Instagram - Leandro Karnal">
                             {socialIcons.instagram}
                         </a>
+                        <a href="https://x.com/leandrokarnal" target="_blank" rel="noreferrer" title="X (Twitter) - Leandro Karnal">
+                            {socialIcons.x}
+                        </a>
                         <a href="https://www.facebook.com/prof.leandrokarnal" target="_blank" rel="noreferrer" title="Facebook - Leandro Karnal">
                             {socialIcons.facebook}
                         </a>
                         <a href="https://www.youtube.com/prazerkarnal" target="_blank" rel="noreferrer" title="YouTube - Leandro Karnal">
                             {socialIcons.youtube}
                         </a>
-                        <a href="https://x.com/leandrokarnal" target="_blank" rel="noreferrer" title="X (Twitter) - Leandro Karnal">
-                            {socialIcons.x}
-                        </a>
-                        
+
+
                     </div>
                 </div>
             </div>
