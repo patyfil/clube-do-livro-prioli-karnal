@@ -17,7 +17,7 @@ const Rodape = () => {
                         <a href="https://twitter.com/GabrielaPrioli" target="_blank" rel="noreferrer">
                             <img src="/imagens/x.webp" alt="X da Prioli" />
                         </a>
-                        <a href="https://twitter.com/GabrielaPrioli" target="_blank" rel="noreferrer">
+                        <a href="https://x.com/leandrokarnal" target="_blank" rel="noreferrer">
                             <img src="/imagens/x.webp" alt="X da Karnal" />
                         </a>
                     </li>
