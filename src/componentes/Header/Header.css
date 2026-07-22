@@ -1,0 +1,102 @@
+.header-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-logo {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: brightness(0) saturate(100%) invert(32%) sepia(90%) saturate(1915%) hue-rotate(196deg) brightness(96%) contrast(101%);
+  transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+  transform: scale(1.05);
+}
+
+.navigation-menu {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.menu-link {
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.menu-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: var(--hover-color);
+  color: var(--hover-color) !important;
+  transform: translateY(-2px);
+}
+
+.menu-link.active {
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .header-logo {
+    height: 40px;
+  }
+
+  .navigation-menu {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    gap: 8px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .navigation-menu::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .navigation-menu::before,
+  .navigation-menu::after {
+    content: '';
+    padding: 0 4px;
+  }
+
+  .menu-link {
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
