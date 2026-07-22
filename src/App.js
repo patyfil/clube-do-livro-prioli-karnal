@@ -811,7 +811,7 @@ function App() {
                                   disabled={saveLoading[bookKey]}
                                   className="admin-btn-action admin-btn-save"
                                 >
-                                  {saveLoading[bookKey] ? 'Salando...' : 'Salvar'}
+                                  {saveLoading[bookKey] ? 'Salvando...' : 'Salvar'}
                                 </button>
                                 {currentLink && (
                                   <button 
