@@ -9,16 +9,26 @@ const Rodape = () => {
                         <a href="https://www.facebook.com/gaprioli" target="_blank" rel="noreferrer">
                             <img src="/imagens/fb.webp" alt="facebook da Prioli" />
                         </a>
+                        <a href="https://www.facebook.com/prof.leandrokarnal" target="_blank" rel="noreferrer">
+                            <img src="/imagens/fb.webp" alt="facebook da Karnal" />
+                        </a>
                     </li>
                     <li>
                         <a href="https://twitter.com/GabrielaPrioli" target="_blank" rel="noreferrer">
-                            <img src="/imagens/tw.webp" alt="twitter da Prioli" />
+                            <img src="/imagens/x.webp" alt="X da Prioli" />
+                        </a>
+                        <a href="https://twitter.com/GabrielaPrioli" target="_blank" rel="noreferrer">
+                            <img src="/imagens/x.webp" alt="X da Karnal" />
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/clubedolivropriolikarnal2023/" target="_blank" rel="noreferrer">
-                            <img src="/imagens/instagram.webp" alt="instagram do clube do livro" />
+                        <a href="https://www.instagram.com/gabrielaprioli" target="_blank" rel="noreferrer">
+                            <img src="/imagens/instagram.webp" alt="instagram da Gabriela" />
                         </a>
+                        <a href="https://www.instagram.com/leandro_karnal" target="_blank" rel="noreferrer">
+                            <img src="/imagens/instagram.webp" alt="instagram do Karnal" />
+                        </a>
+
                     </li>
                 </ul>
             </section>
