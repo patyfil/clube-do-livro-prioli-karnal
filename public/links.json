@@ -1,5 +1,8 @@
 {
-  "Orgulho e Preconceito-Jane Austen": "https://link.amazon/B00jGCQze",
+  "Orgulho e Preconceito-Jane Austen": {
+    "comprar": "https://link.amazon/B00jGCQze",
+    "imagem": "https://www.mercadolivre.com.br/livro-orgulho-e-preconceito--edicao-luxo/up/MLBU1990058748"
+  },
   "O Dilema das Galinhas Felizes-Leandro Karnal e Gustavo Arns": "https://link.amazon/B0aO5WVO4",
   "Ressurreição-Liev Tolstói": "https://link.amazon/B0fFEyNcp",
   "Seremos Dados-Marcus Bruzzo": "https://link.amazon/B05AhC2HZ",
