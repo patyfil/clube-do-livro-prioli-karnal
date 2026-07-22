@@ -638,30 +638,19 @@ function App() {
       });
   };
 
-  const handleSaveBookInfo = (bookTitle, bookAutor, newLink, textImageVal, bookAno) => {
+  const handleSaveBookInfo = (bookTitle, bookAutor, newLink, textImageVal, defaultImagePath) => {
     const bookKey = `${bookTitle}-${bookAutor}`;
     setSaveLoading(prev => ({ ...prev, [bookKey]: true }));
     
     const uploadedData = uploadedImages[bookKey];
     
     if (uploadedData) {
-      const edicaoMap = {
-        'Edição 2026': '7-2026',
-        'Edição 2025': '6-2025',
-        'Edição 2024': '5-2024',
-        'Edição 2023': '4-2023',
-        'Edição 2022': '3-2022',
-        'Edição 2021': '2-2021',
-        'Edição 2020': '1-2020'
-      };
-      const pastaAno = edicaoMap[bookAno] || 'uploads';
-      
-      const sanitizedTitle = bookTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9_-]/g, "_").toLowerCase();
-      const sanitizedAutor = bookAutor.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9_-]/g, "_").toLowerCase();
-      const imagePath = `public/imagens/${pastaAno}/${sanitizedTitle}-${sanitizedAutor}.${uploadedData.extension}`;
+      // Garantir barra inicial no caminho
+      const relativePath = defaultImagePath.startsWith('/') ? defaultImagePath : `/${defaultImagePath}`;
+      const imagePath = `public${relativePath}`;
       const imageApiUrl = `https://api.github.com/repos/${gitUser}/${gitRepo}/contents/${imagePath}`;
       
-      // 1. Obter o SHA do arquivo de imagem se já existir no GitHub
+      // 1. Obter o SHA do arquivo de imagem atual no GitHub para permitir a alteração
       fetch(imageApiUrl, {
         headers: {
           'Authorization': `Bearer ${gitToken}`
@@ -673,7 +662,7 @@ function App() {
         return res.json();
       })
       .then(imgData => {
-        // 2. Fazer o upload do arquivo binário da imagem convertido em base64
+        // 2. Fazer o upload do arquivo binário WebP para sobrescrever o arquivo original
         return fetch(imageApiUrl, {
           method: 'PUT',
           headers: {
@@ -681,7 +670,7 @@ function App() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            message: `Upload capa: ${bookTitle} [skip ci]`,
+            message: `Sobrescrever capa: ${bookTitle} [skip ci]`,
             content: uploadedData.base64,
             sha: imgData.sha || undefined
           })
@@ -689,7 +678,6 @@ function App() {
       })
       .then(res => {
         if (!res.ok) throw new Error(`Erro ao fazer upload da imagem (${res.status})`);
-        const relativeImagePath = `/imagens/${pastaAno}/${sanitizedTitle}-${sanitizedAutor}.${uploadedData.extension}`;
         
         // Limpar o upload da imagem da memória
         setUploadedImages(prev => {
@@ -698,7 +686,9 @@ function App() {
           return copy;
         });
         
-        return executeSaveLink(bookTitle, bookAutor, newLink, relativeImagePath, bookKey);
+        // Como sobrescrevemos o arquivo de imagem original, limpamos a imagem customizada no links.json
+        // e salvamos apenas o link de comissão.
+        return executeSaveLink(bookTitle, bookAutor, newLink, '', bookKey);
       })
       .catch(err => {
         console.error(err);
@@ -971,7 +961,7 @@ function App() {
                                   onClick={() => {
                                     const valLink = document.getElementById(`link-${bookKey}`).value.trim();
                                     const valImg = document.getElementById(`img-${bookKey}`).value.trim();
-                                    handleSaveBookInfo(livro.titulo, livro.autor, valLink, valImg, livro.ano);
+                                    handleSaveBookInfo(livro.titulo, livro.autor, valLink, valImg, livro.imagem);
                                   }}
                                   disabled={saveLoading[bookKey]}
                                   className="admin-btn-action admin-btn-save"
