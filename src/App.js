@@ -568,14 +568,17 @@ function App() {
     setLoginError('');
   };
 
-  const handleSaveLink = (bookTitle, bookAutor, newLink) => {
+  const handleSaveLink = (bookTitle, bookAutor, newLink, newImage) => {
     const bookKey = `${bookTitle}-${bookAutor}`;
     const updatedLinks = { ...links };
     
-    if (!newLink) {
+    if (!newLink && !newImage) {
       delete updatedLinks[bookKey];
     } else {
-      updatedLinks[bookKey] = newLink;
+      updatedLinks[bookKey] = {
+        comprar: newLink || '',
+        imagem: newImage || ''
+      };
     }
     
     setSaveLoading(prev => ({ ...prev, [bookKey]: true }));
@@ -653,7 +656,7 @@ function App() {
 
   const handleDeleteLink = (bookTitle, bookAutor) => {
     if (window.confirm(`Deseja mesmo remover o link de comissão de "${bookTitle}"?`)) {
-      handleSaveLink(bookTitle, bookAutor, '');
+      handleSaveLink(bookTitle, bookAutor, '', '');
     }
   };
 
@@ -786,10 +789,12 @@ function App() {
                   ) : (
                     livrosFiltradosAdmin.map(livro => {
                       const bookKey = `${livro.titulo}-${livro.autor}`;
-                      const currentLink = links[bookKey] || '';
+                      const linkInfo = links[bookKey];
+                      const currentLink = typeof linkInfo === 'string' ? linkInfo : (linkInfo?.comprar || '');
+                      const currentImage = (typeof linkInfo === 'object' && linkInfo?.imagem) ? linkInfo.imagem : '';
                       return (
                         <div key={bookKey} className="admin-book-item">
-                          <img src={livro.imagem} alt={livro.titulo} className="admin-book-thumb" />
+                          <img src={currentImage || livro.imagem} alt={livro.titulo} className="admin-book-thumb" />
                           <div className="admin-book-details">
                             <span className="admin-book-title">{livro.titulo}</span>
                             <span className="admin-book-author">{livro.autor} &bull; <small>{livro.ano}</small></span>
@@ -797,23 +802,31 @@ function App() {
                             <div className="admin-actions-row">
                               <input 
                                 type="url" 
-                                placeholder="https://link-de-afiliado.com..." 
+                                placeholder="Link de comissão (ex: Amazon)..." 
                                 defaultValue={currentLink}
-                                id={`input-${bookKey}`}
+                                id={`link-${bookKey}`}
+                                className="admin-input admin-link-input"
+                              />
+                              <input 
+                                type="url" 
+                                placeholder="URL da Capa/Imagem (opcional)..." 
+                                defaultValue={currentImage}
+                                id={`img-${bookKey}`}
                                 className="admin-input admin-link-input"
                               />
                               <div className="admin-buttons-grp">
                                 <button 
                                   onClick={() => {
-                                    const val = document.getElementById(`input-${bookKey}`).value.trim();
-                                    handleSaveLink(livro.titulo, livro.autor, val);
+                                    const valLink = document.getElementById(`link-${bookKey}`).value.trim();
+                                    const valImg = document.getElementById(`img-${bookKey}`).value.trim();
+                                    handleSaveLink(livro.titulo, livro.autor, valLink, valImg);
                                   }}
                                   disabled={saveLoading[bookKey]}
                                   className="admin-btn-action admin-btn-save"
                                 >
                                   {saveLoading[bookKey] ? 'Salvando...' : 'Salvar'}
                                 </button>
-                                {currentLink && (
+                                {(currentLink || currentImage) && (
                                   <button 
                                     onClick={() => handleDeleteLink(livro.titulo, livro.autor)}
                                     disabled={saveLoading[bookKey]}

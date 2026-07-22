@@ -1,10 +1,14 @@
 import './Livro.css'
 
-const Livro = ({ livro, corDeFundo, linkCompra }) => {
+const Livro = ({ livro, corDeFundo, linkInfo }) => {
+  // Tratar compatibilidade se for string (versão antiga) ou objeto (versão nova)
+  const linkCompra = typeof linkInfo === 'string' ? linkInfo : (linkInfo?.comprar || '');
+  const imagemExibida = (typeof linkInfo === 'object' && linkInfo?.imagem) ? linkInfo.imagem : livro.imagem;
+
   return (
     <div className='livro'>
       <div className='cabecalho' style={{ backgroundColor: corDeFundo }}>
-        <img src={livro.imagem} alt={livro.titulo} />
+        <img src={imagemExibida} alt={livro.titulo} />
       </div>
       <div className='rodape'>
         <div className="livro-info">

@@ -16,7 +16,7 @@ const Ano = ({ ano, livros, links = {} }) => {
                             key={indice} 
                             livro={livro} 
                             corDeFundo={ano.corSecundaria}
-                            linkCompra={links[key]}
+                            linkInfo={links[key]}
                         />
                     );
                 })}
