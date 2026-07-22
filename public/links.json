@@ -20,7 +20,10 @@
   "Não Se Esqueça!-Mario Sérgio Cortella": "https://link.amazon/B012Erket",
   "Tarsila: Uma Vida Doce-Amarga-Mary Del Priore": "https://link.amazon/B01NzPQpY",
   "As Meninas-Lygia Fagundes Telles": "https://link.amazon/B02KyzdFF",
-  "A Insustentável Leveza do Ser-Milan Kundera": "https://link.amazon/B0b1Q7oHp",
+  "A Insustentável Leveza do Ser-Milan Kundera": {
+    "comprar": "https://link.amazon/B0b1Q7oHp",
+    "imagem": "https://m.media-amazon.com/images/I/81U1hX2wybS._SY466_.jpg"
+  },
   "Fora de Série (Outliers)-Malcolm Gladwell": "https://link.amazon/B0hyFAncm",
   "A Cor Púrpura-Alice Walker": "https://link.amazon/B07QkorMK",
   "O Alienista-Machado de Assis": "https://link.amazon/B08S1C8mO",
