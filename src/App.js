@@ -586,8 +586,7 @@ function App() {
     // 1. Obter o SHA do arquivo atual no GitHub para permitir a alteração
     fetch(apiUrl, {
       headers: {
-        'Authorization': `Bearer ${gitToken}`,
-        'Cache-Control': 'no-cache'
+        'Authorization': `Bearer ${gitToken}`
       }
     })
     .then(res => {
