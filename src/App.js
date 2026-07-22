@@ -467,6 +467,7 @@ function App() {
   const [saveLoading, setSaveLoading] = useState({});
   const [adminSearch, setAdminSearch] = useState('');
   const [adminEditionFilter, setAdminEditionFilter] = useState('Todas');
+  const [uploadedImages, setUploadedImages] = useState({});
 
   const RAW_LINKS_URL = 'https://raw.githubusercontent.com/patyfil/clube-do-livro-prioli-karnal/main/public/links.json';
 
@@ -568,8 +569,148 @@ function App() {
     setLoginError('');
   };
 
-  const handleSaveLink = (bookTitle, bookAutor, newLink, newImage) => {
+  const convertToWebP = (file, maxWidth = 300) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
+
+          // Redimensionar mantendo a proporção original (aspect ratio)
+          if (width > maxWidth) {
+            height = Math.round((height * maxWidth) / width);
+            width = maxWidth;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Tentar exportar como WebP comprimida (qualidade 0.8)
+          try {
+            const webpDataUrl = canvas.toDataURL('image/webp', 0.8);
+            if (webpDataUrl.startsWith('data:image/webp')) {
+              const base64Content = webpDataUrl.split(',')[1];
+              resolve({ base64: base64Content, extension: 'webp' });
+              return;
+            }
+          } catch (e) {
+            console.warn("Sem suporte a WebP no Canvas do navegador, usando fallback.");
+          }
+
+          // Fallback para o formato original (PNG/JPG) se WebP não for suportado
+          const isJpeg = file.type === 'image/jpeg' || file.type === 'image/jpg';
+          const format = isJpeg ? 'image/jpeg' : 'image/png';
+          const ext = isJpeg ? 'jpg' : 'png';
+          const fallbackDataUrl = canvas.toDataURL(format, 0.8);
+          const base64Content = fallbackDataUrl.split(',')[1];
+          resolve({ base64: base64Content, extension: ext });
+        };
+        img.onerror = (err) => reject(err);
+        img.src = event.target.result;
+      };
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleImageFileChange = (e, bookKey) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Converter para WebP comprimida (max 300px largura) no próprio navegador
+    convertToWebP(file, 300)
+      .then(result => {
+        setUploadedImages(prev => ({
+          ...prev,
+          [bookKey]: result
+        }));
+      })
+      .catch(err => {
+        console.error("Erro ao converter imagem:", err);
+        alert("Erro ao processar imagem. Tente outro arquivo.");
+        e.target.value = '';
+      });
+  };
+
+  const handleSaveBookInfo = (bookTitle, bookAutor, newLink, textImageVal, bookAno) => {
     const bookKey = `${bookTitle}-${bookAutor}`;
+    setSaveLoading(prev => ({ ...prev, [bookKey]: true }));
+    
+    const uploadedData = uploadedImages[bookKey];
+    
+    if (uploadedData) {
+      const edicaoMap = {
+        'Edição 2026': '7-2026',
+        'Edição 2025': '6-2025',
+        'Edição 2024': '5-2024',
+        'Edição 2023': '4-2023',
+        'Edição 2022': '3-2022',
+        'Edição 2021': '2-2021',
+        'Edição 2020': '1-2020'
+      };
+      const pastaAno = edicaoMap[bookAno] || 'uploads';
+      
+      const sanitizedTitle = bookTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9_-]/g, "_").toLowerCase();
+      const sanitizedAutor = bookAutor.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9_-]/g, "_").toLowerCase();
+      const imagePath = `public/imagens/${pastaAno}/${sanitizedTitle}-${sanitizedAutor}.${uploadedData.extension}`;
+      const imageApiUrl = `https://api.github.com/repos/${gitUser}/${gitRepo}/contents/${imagePath}`;
+      
+      // 1. Obter o SHA do arquivo de imagem se já existir no GitHub
+      fetch(imageApiUrl, {
+        headers: {
+          'Authorization': `Bearer ${gitToken}`
+        }
+      })
+      .then(res => {
+        if (res.status === 404) return { sha: null };
+        if (!res.ok) throw new Error(`Erro ao buscar imagem no GitHub: ${res.status}`);
+        return res.json();
+      })
+      .then(imgData => {
+        // 2. Fazer o upload do arquivo binário da imagem convertido em base64
+        return fetch(imageApiUrl, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${gitToken}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Upload capa: ${bookTitle} [skip ci]`,
+            content: uploadedData.base64,
+            sha: imgData.sha || undefined
+          })
+        });
+      })
+      .then(res => {
+        if (!res.ok) throw new Error(`Erro ao fazer upload da imagem (${res.status})`);
+        const relativeImagePath = `/imagens/${pastaAno}/${sanitizedTitle}-${sanitizedAutor}.${uploadedData.extension}`;
+        
+        // Limpar o upload da imagem da memória
+        setUploadedImages(prev => {
+          const copy = { ...prev };
+          delete copy[bookKey];
+          return copy;
+        });
+        
+        return executeSaveLink(bookTitle, bookAutor, newLink, relativeImagePath, bookKey);
+      })
+      .catch(err => {
+        console.error(err);
+        alert(`Falha ao fazer upload da imagem: ${err.message}`);
+        setSaveLoading(prev => ({ ...prev, [bookKey]: false }));
+      });
+    } else {
+      executeSaveLink(bookTitle, bookAutor, newLink, textImageVal, bookKey);
+    }
+  };
+
+  const executeSaveLink = (bookTitle, bookAutor, newLink, newImage, bookKey) => {
     const updatedLinks = { ...links };
     
     if (!newLink && !newImage) {
@@ -581,21 +722,16 @@ function App() {
       };
     }
     
-    setSaveLoading(prev => ({ ...prev, [bookKey]: true }));
-    
     const filePath = 'public/links.json';
     const apiUrl = `https://api.github.com/repos/${gitUser}/${gitRepo}/contents/${filePath}`;
     
-    // 1. Obter o SHA do arquivo atual no GitHub para permitir a alteração
-    fetch(apiUrl, {
+    return fetch(apiUrl, {
       headers: {
         'Authorization': `Bearer ${gitToken}`
       }
     })
     .then(res => {
-      if (res.status === 404) {
-        return { sha: null };
-      }
+      if (res.status === 404) return { sha: null };
       if (!res.ok) {
         return res.text().then(text => {
           let msg = text;
@@ -611,10 +747,8 @@ function App() {
     .then(fileData => {
       const sha = fileData.sha;
       const jsonContent = JSON.stringify(updatedLinks, null, 2);
-      // Suporte a caracteres acentuados em português no base64
       const base64Content = btoa(unescape(encodeURIComponent(jsonContent)));
       
-      // 2. Fazer o commit automático no repositório
       return fetch(apiUrl, {
         method: 'PUT',
         headers: {
@@ -643,11 +777,11 @@ function App() {
     })
     .then(() => {
       setLinks(updatedLinks);
-      alert('Link atualizado e salvo com sucesso no GitHub!');
+      alert('Dados salvos com sucesso no GitHub!');
     })
     .catch(err => {
-      console.error('Erro detalhado ao salvar link:', err);
-      alert(`Falha ao salvar link: ${err.message}`);
+      console.error('Erro ao salvar links:', err);
+      alert(`Falha ao salvar links: ${err.message}`);
     })
     .finally(() => {
       setSaveLoading(prev => ({ ...prev, [bookKey]: false }));
@@ -655,8 +789,9 @@ function App() {
   };
 
   const handleDeleteLink = (bookTitle, bookAutor) => {
+    const bookKey = `${bookTitle}-${bookAutor}`;
     if (window.confirm(`Deseja mesmo remover o link de comissão de "${bookTitle}"?`)) {
-      handleSaveLink(bookTitle, bookAutor, '', '');
+      executeSaveLink(bookTitle, bookAutor, '', '', bookKey);
     }
   };
 
@@ -800,26 +935,43 @@ function App() {
                             <span className="admin-book-author">{livro.autor} &bull; <small>{livro.ano}</small></span>
                             
                             <div className="admin-actions-row">
-                              <input 
-                                type="url" 
-                                placeholder="Link de comissão (ex: Amazon)..." 
-                                defaultValue={currentLink}
-                                id={`link-${bookKey}`}
-                                className="admin-input admin-link-input"
-                              />
-                              <input 
-                                type="url" 
-                                placeholder="URL da Capa/Imagem (opcional)..." 
-                                defaultValue={currentImage}
-                                id={`img-${bookKey}`}
-                                className="admin-input admin-link-input"
-                              />
+                              <div className="admin-inputs-col">
+                                <input 
+                                  type="url" 
+                                  placeholder="Link de comissão (ex: Amazon)..." 
+                                  defaultValue={currentLink}
+                                  id={`link-${bookKey}`}
+                                  className="admin-input admin-link-input"
+                                />
+                                <div className="admin-image-row">
+                                  <input 
+                                    type="url" 
+                                    placeholder={uploadedImages[bookKey] ? "Capa carregada localmente" : "Ou URL da Capa/Imagem..."}
+                                    defaultValue={uploadedImages[bookKey] ? "" : currentImage}
+                                    id={`img-${bookKey}`}
+                                    className="admin-input admin-link-input"
+                                    disabled={!!uploadedImages[bookKey]}
+                                  />
+                                  <div className="admin-file-upload">
+                                    <label htmlFor={`file-${bookKey}`} className="admin-file-label" style={{ backgroundColor: uploadedImages[bookKey] ? '#d4edda' : '', borderColor: uploadedImages[bookKey] ? '#c3e6cb' : '' }}>
+                                      {uploadedImages[bookKey] ? '✓ Pronto' : 'Upload Capa'}
+                                    </label>
+                                    <input 
+                                      type="file" 
+                                      id={`file-${bookKey}`} 
+                                      accept="image/*"
+                                      onChange={(e) => handleImageFileChange(e, bookKey)}
+                                      style={{ display: 'none' }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                               <div className="admin-buttons-grp">
                                 <button 
                                   onClick={() => {
                                     const valLink = document.getElementById(`link-${bookKey}`).value.trim();
                                     const valImg = document.getElementById(`img-${bookKey}`).value.trim();
-                                    handleSaveLink(livro.titulo, livro.autor, valLink, valImg);
+                                    handleSaveBookInfo(livro.titulo, livro.autor, valLink, valImg, livro.ano);
                                   }}
                                   disabled={saveLoading[bookKey]}
                                   className="admin-btn-action admin-btn-save"

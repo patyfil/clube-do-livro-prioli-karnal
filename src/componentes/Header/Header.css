@@ -76,7 +76,8 @@
   .navigation-menu {
     width: 100%;
     overflow-x: auto;
-    padding-bottom: 6px;
+    padding: 6px 4px 8px 4px;
+    margin: 0 -4px;
     gap: 8px;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE/Edge */

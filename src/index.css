@@ -429,3 +429,47 @@ h2 {
     flex: 1;
   }
 }
+
+/* Novos estilos para upload de imagem no painel admin */
+.admin-inputs-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.admin-image-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+}
+
+.admin-file-upload {
+  display: flex;
+  align-items: center;
+}
+
+.admin-file-label {
+  background: #f8f9fa;
+  color: #495057;
+  border: 1px dashed #ced4da;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  height: 34px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-file-label:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
