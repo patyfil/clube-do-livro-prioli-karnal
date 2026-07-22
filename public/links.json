@@ -19,7 +19,10 @@
   "Autocracia S.A.-Anne Applebaum": "https://link.amazon/B09XBsw0d",
   "O que nos faz bons ou maus-Paul Bloom": "https://link.amazon/B04ZJq1tI",
   "A Arte de Amar-Christian Dunker": "https://link.amazon/B0dBjDGur",
-  "O Velho e o Mar-Ernest Hemingway": "https://link.amazon/B0iVH7lT7",
+  "O Velho e o Mar-Ernest Hemingway": {
+    "comprar": "https://link.amazon/B0iVH7lT7",
+    "imagem": "https://m.media-amazon.com/images/I/71wo6d7Ex3L._SL1500_.jpg"
+  },
   "Igualdade: Significado e Importância-Michael Sandel e Thomas Piketty": "https://link.amazon/B07mobT5Z",
   "O Sol é Para Todos-Harper Lee": "https://link.amazon/B079PfCVq",
   "Factfulness-Hans Rosling": "https://link.amazon/B083YZbAo",
