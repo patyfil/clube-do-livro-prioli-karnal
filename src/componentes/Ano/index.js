@@ -1,7 +1,7 @@
 import Livro from '../Livro'
 import './Ano.css'
 
-const Ano = ({ ano, livros }) => {
+const Ano = ({ ano, livros, links = {} }) => {
     return (
 
         livros.length > 0 && 
@@ -9,10 +9,17 @@ const Ano = ({ ano, livros }) => {
         style={{ backgroundImage: 'url(/imagens/fundo.webp)', backgroundColor: ano.corPrimaria }}>
             <h3 style={{ borderColor: ano.corSecundaria }}>{ano.nome}</h3>
             <div className='livros'>
-                {livros.map((livro, indice) => <Livro 
-                key={indice} 
-                livro={livro} 
-                corDeFundo={ano.corSecundaria} />)}
+                {livros.map((livro, indice) => {
+                    const key = `${livro.titulo}-${livro.autor}`;
+                    return (
+                        <Livro 
+                            key={indice} 
+                            livro={livro} 
+                            corDeFundo={ano.corSecundaria}
+                            linkCompra={links[key]}
+                        />
+                    );
+                })}
             </div>
         </section>
     )

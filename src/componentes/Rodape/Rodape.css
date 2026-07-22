@@ -105,6 +105,8 @@
   align-items: center;
   font-size: 13px;
   color: #8d99ae;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .footer-bottom-content p {
@@ -114,6 +116,30 @@
 .highlight-author {
   color: #ffffff;
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.developer-name:hover {
+  color: #FE65A9 !important; /* Destaque rosa elegante ao passar o mouse */
+}
+
+.admin-link {
+  color: #a1b0cb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+  color: #ffffff;
+  background: #0169D6;
+  border-color: #0169D6;
+  box-shadow: 0 0 10px rgba(1, 105, 214, 0.4);
 }
 
 /* Responsive Styles */

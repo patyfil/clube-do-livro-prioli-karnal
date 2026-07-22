@@ -457,10 +457,61 @@ function App() {
   ];
 
   const [edicaoAtiva, setEdicaoAtiva] = useState('Edição 2026');
+  const [links, setLinks] = useState({});
+  const [showAdmin, setShowAdmin] = useState(false);
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [gitUser, setGitUser] = useState('patyfil');
+  const [gitRepo, setGitRepo] = useState('clube-do-livro-prioli-karnal');
+  const [gitToken, setGitToken] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [saveLoading, setSaveLoading] = useState({});
+  const [adminSearch, setAdminSearch] = useState('');
+  const [adminEditionFilter, setAdminEditionFilter] = useState('Todas');
+
+  const RAW_LINKS_URL = 'https://raw.githubusercontent.com/patyfil/clube-do-livro-prioli-karnal/main/public/links.json';
+
+  // Carregar links salvos
+  useEffect(() => {
+    fetch(`${RAW_LINKS_URL}?t=${Date.now()}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Falha ao carregar remoto');
+        return res.json();
+      })
+      .then(data => setLinks(data))
+      .catch(() => {
+        // Fallback local caso dê erro (ex: offline ou rodando antes de subir pro github)
+        fetch('/links.json')
+          .then(res => res.ok ? res.json() : {})
+          .then(data => setLinks(data))
+          .catch(() => {});
+      });
+  }, []);
+
+  // Carregar login salvo no localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('git_cms_credentials');
+    if (saved) {
+      try {
+        const creds = JSON.parse(saved);
+        if (creds.user && creds.repo && creds.token) {
+          setGitUser(creds.user);
+          setGitRepo(creds.repo);
+          setGitToken(creds.token);
+          setIsAdminLoggedIn(true);
+        }
+      } catch (e) {}
+    }
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
+      if (hash === 'admin') {
+        setShowAdmin(true);
+        return;
+      }
+      
+      setShowAdmin(false);
       if (hash) {
         const found = edicao.find(e => e.nome.includes(hash));
         if (found) {
@@ -468,7 +519,6 @@ function App() {
           return;
         }
       }
-      // Se não houver hash válido, direciona para o ano mais recente (2026) e atualiza a URL
       setEdicaoAtiva('Edição 2026');
       window.location.hash = '#2026';
     };
@@ -479,7 +529,131 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setLoginError('');
+    
+    if (!gitUser || !gitRepo || !gitToken) {
+      setLoginError('Por favor, preencha todos os campos.');
+      return;
+    }
+    
+    // Validar token buscando informações do repositório
+    fetch(`https://api.github.com/repos/${gitUser}/${gitRepo}`, {
+      headers: {
+        'Authorization': `token ${gitToken}`
+      }
+    })
+    .then(res => {
+      if (res.ok) {
+        localStorage.setItem('git_cms_credentials', JSON.stringify({
+          user: gitUser,
+          repo: gitRepo,
+          token: gitToken
+        }));
+        setIsAdminLoggedIn(true);
+      } else {
+        setLoginError('Credenciais inválidas ou repositório não encontrado. Verifique seu token e nome do repositório.');
+      }
+    })
+    .catch(() => {
+      setLoginError('Erro de conexão ao validar. Verifique sua conexão.');
+    });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('git_cms_credentials');
+    setIsAdminLoggedIn(false);
+    setGitToken('');
+    setLoginError('');
+  };
+
+  const handleSaveLink = (bookTitle, bookAutor, newLink) => {
+    const bookKey = `${bookTitle}-${bookAutor}`;
+    const updatedLinks = { ...links };
+    
+    if (!newLink) {
+      delete updatedLinks[bookKey];
+    } else {
+      updatedLinks[bookKey] = newLink;
+    }
+    
+    setSaveLoading(prev => ({ ...prev, [bookKey]: true }));
+    
+    const filePath = 'public/links.json';
+    const apiUrl = `https://api.github.com/repos/${gitUser}/${gitRepo}/contents/${filePath}`;
+    
+    // 1. Obter o SHA do arquivo atual no GitHub para permitir a alteração
+    fetch(apiUrl, {
+      headers: {
+        'Authorization': `token ${gitToken}`,
+        'Cache-Control': 'no-cache'
+      }
+    })
+    .then(res => {
+      if (res.status === 404) {
+        return { sha: null };
+      }
+      return res.json();
+    })
+    .then(fileData => {
+      const sha = fileData.sha;
+      const jsonContent = JSON.stringify(updatedLinks, null, 2);
+      // Suporte a caracteres acentuados em português no base64
+      const base64Content = btoa(unescape(encodeURIComponent(jsonContent)));
+      
+      // 2. Fazer o commit automático no repositório
+      return fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${gitToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: `Atualizar link: ${bookTitle} [skip ci]`,
+          content: base64Content,
+          sha: sha || undefined
+        })
+      });
+    })
+    .then(res => {
+      if (res.ok) {
+        setLinks(updatedLinks);
+        alert('Link atualizado e salvo com sucesso no GitHub!');
+      } else {
+        alert('Erro ao salvar no GitHub. Verifique as permissões de gravação do seu token.');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Erro de conexão ao tentar salvar.');
+    })
+    .finally(() => {
+      setSaveLoading(prev => ({ ...prev, [bookKey]: false }));
+    });
+  };
+
+  const handleDeleteLink = (bookTitle, bookAutor) => {
+    if (window.confirm(`Deseja mesmo remover o link de comissão de "${bookTitle}"?`)) {
+      handleSaveLink(bookTitle, bookAutor, '');
+    }
+  };
+
+  const closeAdmin = () => {
+    setShowAdmin(false);
+    const anoLimpo = edicaoAtiva.replace('Edição ', '');
+    window.location.hash = `#${anoLimpo}`;
+  };
+
   const anoAtivo = edicao.find(ano => ano.nome === edicaoAtiva) || edicao[0];
+
+  // Filtro de livros para exibição no painel administrativo
+  const livrosFiltradosAdmin = livros.filter(livro => {
+    const matchesSearch = livro.titulo.toLowerCase().includes(adminSearch.toLowerCase()) || 
+                          livro.autor.toLowerCase().includes(adminSearch.toLowerCase());
+    const matchesEdition = adminEditionFilter === 'Todas' || livro.ano === adminEditionFilter;
+    return matchesSearch && matchesEdition;
+  });
 
   return (
     <div>
@@ -492,11 +666,161 @@ function App() {
             key={anoAtivo.nome}
             ano={anoAtivo}
             livros={livros.filter(livro => livro.ano === anoAtivo.nome)} 
+            links={links}
           />
         )}
       </section>
       
       <Rodape />
+
+      {/* MODAL DO PAINEL ADMIN */}
+      {showAdmin && (
+        <div className="admin-modal-overlay">
+          <div className="admin-modal-content">
+            <div className="admin-modal-header">
+              <h2>Painel de Links de Comissão</h2>
+              <button className="admin-btn-close-header" onClick={closeAdmin}>&times;</button>
+            </div>
+            
+            {!isAdminLoggedIn ? (
+              <form onSubmit={handleLogin} className="admin-login-form">
+                <p className="admin-login-desc">
+                  Gerencie os links de afiliado exibidos em cada livro de forma direta e gratuita. 
+                  Conecte-se com sua conta GitHub e um token com permissão <strong>repo</strong>.
+                </p>
+                {loginError && <div className="admin-login-error">{loginError}</div>}
+                
+                <div className="admin-form-group">
+                  <label>Usuário GitHub:</label>
+                  <input 
+                    type="text" 
+                    value={gitUser} 
+                    onChange={e => setGitUser(e.target.value)} 
+                    className="admin-input"
+                    placeholder="Ex: patyfil"
+                    required
+                  />
+                </div>
+                
+                <div className="admin-form-group">
+                  <label>Repositório:</label>
+                  <input 
+                    type="text" 
+                    value={gitRepo} 
+                    onChange={e => setGitRepo(e.target.value)} 
+                    className="admin-input"
+                    placeholder="Ex: clube-do-livro-prioli-karnal"
+                    required
+                  />
+                </div>
+                
+                <div className="admin-form-group">
+                  <label>Personal Access Token (PAT):</label>
+                  <input 
+                    type="password" 
+                    value={gitToken} 
+                    onChange={e => setGitToken(e.target.value)} 
+                    className="admin-input"
+                    placeholder="Cole seu token ghp_..."
+                    required
+                  />
+                  <small className="admin-token-help">
+                    <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" rel="noreferrer">
+                      Gerar um Token no GitHub (marcar permissão "repo").
+                    </a>
+                  </small>
+                </div>
+                
+                <button type="submit" className="admin-btn-submit">Acessar Painel</button>
+              </form>
+            ) : (
+              <div className="admin-dashboard">
+                <div className="admin-dashboard-top">
+                  <div className="admin-user-info">
+                    Conectado ao repositório: <strong>{gitUser}/{gitRepo}</strong>
+                  </div>
+                  <button onClick={handleLogout} className="admin-btn-logout">Desconectar</button>
+                </div>
+
+                <div className="admin-filters">
+                  <input 
+                    type="text" 
+                    placeholder="Pesquisar por título ou autor..." 
+                    value={adminSearch}
+                    onChange={e => setAdminSearch(e.target.value)}
+                    className="admin-input admin-search"
+                  />
+                  <select 
+                    value={adminEditionFilter} 
+                    onChange={e => setAdminEditionFilter(e.target.value)}
+                    className="admin-input admin-select"
+                  >
+                    <option value="Todas">Todas as Edições</option>
+                    {edicao.map(e => (
+                      <option key={e.nome} value={e.nome}>{e.nome}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="admin-books-list">
+                  {livrosFiltradosAdmin.length === 0 ? (
+                    <p className="no-books-found">Nenhum livro corresponde à busca.</p>
+                  ) : (
+                    livrosFiltradosAdmin.map(livro => {
+                      const bookKey = `${livro.titulo}-${livro.autor}`;
+                      const currentLink = links[bookKey] || '';
+                      return (
+                        <div key={bookKey} className="admin-book-item">
+                          <img src={livro.imagem} alt={livro.titulo} className="admin-book-thumb" />
+                          <div className="admin-book-details">
+                            <span className="admin-book-title">{livro.titulo}</span>
+                            <span className="admin-book-author">{livro.autor} &bull; <small>{livro.ano}</small></span>
+                            
+                            <div className="admin-actions-row">
+                              <input 
+                                type="url" 
+                                placeholder="https://link-de-afiliado.com..." 
+                                defaultValue={currentLink}
+                                id={`input-${bookKey}`}
+                                className="admin-input admin-link-input"
+                              />
+                              <div className="admin-buttons-grp">
+                                <button 
+                                  onClick={() => {
+                                    const val = document.getElementById(`input-${bookKey}`).value.trim();
+                                    handleSaveLink(livro.titulo, livro.autor, val);
+                                  }}
+                                  disabled={saveLoading[bookKey]}
+                                  className="admin-btn-action admin-btn-save"
+                                >
+                                  {saveLoading[bookKey] ? 'Salando...' : 'Salvar'}
+                                </button>
+                                {currentLink && (
+                                  <button 
+                                    onClick={() => handleDeleteLink(livro.titulo, livro.autor)}
+                                    disabled={saveLoading[bookKey]}
+                                    className="admin-btn-action admin-btn-delete"
+                                  >
+                                    Excluir
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+              </div>
+            )}
+            
+            <div className="admin-modal-footer">
+              <button className="admin-btn-close" onClick={closeAdmin}>Fechar</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
