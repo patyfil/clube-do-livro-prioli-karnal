@@ -68,7 +68,7 @@ const Rodape = () => {
             <a href="https://www.instagram.com/leandro_karnal/" target="_blank" rel="noreferrer" title="Instagram - Leandro Karnal">
               {socialIcons.instagram}
             </a>
-            <a href="https://www.youtube.com/c/PrazerKarnaloficial" target="_blank" rel="noreferrer" title="YouTube - Leandro Karnal">
+            <a href="https://youtube.com/@prazerkarnal" target="_blank" rel="noreferrer" title="YouTube - Leandro Karnal">
               {socialIcons.youtube}
             </a>
           </div>
